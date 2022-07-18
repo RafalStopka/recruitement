@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.horizontally-centered {
+    height: 30px;
+    width: calc(100% - 300px);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+    position: fixed;
+    z-index: 10;
+    background-color: red;
+    top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.footer {
+    position: fixed;
+    bottom: 0;
+    background-color: green;
 }
 
-.App-link {
-  color: #61dafb;
+.left-side {
+    position: relative;
+    min-height: 2500px;
+    background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.left-side::before,
+.left-side::after {
+    top: 0;
+    width: 100px;
+    height: 100%;
+    background-color: red;
+    content: '';
+    position: absolute;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%, rgba(0,0,0,1) 100%);
+}
+.left-side::after {
+    right: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(270deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%, rgba(0,0,0,1) 100%); 
+}
+
+.inner {
+    position: absolute;
+    width: calc(100% - 200px);
+    height: 300px;
+    background-color: blue;
+}
+
+.square {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    cursor: pointer;
+}
+.square:hover {
+    animation-duration: 6s;
+    animation-name: toRight;
+    animation-iteration-count: 1;
+}
+
+.grid {
+    position: absolute;
+    top: 20%;
+    display: grid;
+    grid-template-areas:
+      "a a"
+      "b c"
+      "d d";
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+}
+
+.grid-element-a{
+    grid-area: a;
+    text-align: center;
+}
+.grid-element-b{
+    grid-area: b;
+}
+.grid-element-c{
+    grid-area: c;
+}
+.grid-element-d{
+    grid-area: d;
+}
+
+@keyframes toRight {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+        transform: translateX(-100%);
+    }
 }

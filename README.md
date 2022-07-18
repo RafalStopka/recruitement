@@ -1,1 +1,2 @@
-Just the test to make sure everything goes right
+To start the project please run `npm install`
+Then run `npm start`
